@@ -81,9 +81,13 @@ nav{
 .hero{
   position:relative;background:var(--paper);color:var(--ink);
   padding:76px 0 110px;overflow:hidden;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
 }
 .hero-inner{
   position:relative;display:grid;grid-template-columns:1fr 320px;gap:60px;align-items:center;
+  width:100%;
 }
 .hero-eyebrow{
   font-family:'Kalam',cursive;color:var(--c-pink);font-weight:700;font-size:1.05rem;
@@ -360,7 +364,8 @@ footer{ background:var(--ink-2); color:#B8A8CC; padding:50px 0 30px; }
 .foot-bottom{ border-top:1px solid rgba(255,255,255,.08); padding-top:20px; font-size:.85rem; text-align:center; }
 
 @media(max-width:900px){
-  .hero-inner{ grid-template-columns:1fr; }
+  .hero{ min-height:unset; display:block; }
+  .hero-inner{ grid-template-columns:1fr; width:auto; }
   .hero h1{ font-size:2rem; }
   .cube-scene{ width:170px;height:170px; }
   .face{ width:170px;height:170px; }
