@@ -29,7 +29,6 @@ const PROMOS = {
     files: [
       "WhatsApp Image 2026-07-06 at 15.45.28.jpeg",
       "WhatsApp Image 2026-07-06 at 15.45.29 (1).jpeg",
-      "WhatsApp Image 2026-07-06 at 15.45.29.jpeg",
       "WhatsApp Image 2026-07-06 at 15.45.30 (1).jpeg",
       "WhatsApp Image 2026-07-06 at 15.45.30.jpeg",
       "WhatsApp Image 2026-07-06 at 15.45.31 (1).jpeg",
