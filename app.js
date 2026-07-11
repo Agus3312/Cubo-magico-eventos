@@ -94,6 +94,12 @@ window.addEventListener('load', () => {
   setTimeout(() => {
     window.scrollTo(0, 0);
   }, 10);
+
+  // Cargar el mapa de Google Maps de forma diferida tras el load para evitar el autofocus/scroll intrusivo
+  const mapIframe = document.getElementById('map-iframe');
+  if (mapIframe && mapIframe.getAttribute('data-src')) {
+    mapIframe.src = mapIframe.getAttribute('data-src');
+  }
 });
 
 // Navegación suave por anclas sin ensuciar la URL con el hash (#)
