@@ -88,3 +88,23 @@ faqs.forEach(([q,a])=>{
   item.querySelector('.faq-q').addEventListener('click', ()=> item.classList.toggle('open'));
   list.appendChild(item);
 });
+
+// Forzar el inicio de la página arriba de todo al recargar en mobile (evita la restauración automática de scroll del navegador)
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 10);
+});
+
+// Navegación suave por anclas sin ensuciar la URL con el hash (#)
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  });
+});
