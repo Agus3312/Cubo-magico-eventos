@@ -89,28 +89,36 @@ faqs.forEach(([q,a])=>{
   list.appendChild(item);
 });
 
-// Forzar el inicio de la página arriba de todo al recargar en mobile (evita la restauración automática de scroll del navegador)
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    window.scrollTo(0, 0);
-  }, 10);
+// --- Scroll & Iframe Control ---
 
-  // Cargar el mapa de Google Maps de forma diferida tras el load para evitar el autofocus/scroll intrusivo
+// Scroll instantáneo arriba al cargar la página
+window.scrollTo(0, 0);
+
+window.addEventListener('load', () => {
+  // Scroll inmediato post-load
+  window.scrollTo(0, 0);
+
+  // Cargar el mapa de Google Maps con delay para que no robe foco durante el render inicial
   const mapIframe = document.getElementById('map-iframe');
   if (mapIframe && mapIframe.getAttribute('data-src')) {
-    mapIframe.src = mapIframe.getAttribute('data-src');
+    setTimeout(() => {
+      // Cuando el iframe termine de cargar, forzar scroll arriba una vez más
+      mapIframe.addEventListener('load', () => {
+        window.scrollTo(0, 0);
+      }, { once: true });
+      mapIframe.src = mapIframe.getAttribute('data-src');
+    }, 1500);
   }
 });
 
-// Navegación suave por anclas sin ensuciar la URL con el hash (#)
+// Navegación suave por anclas sin cambiar la URL (evita que el hash provoque scroll en futuras visitas)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth'
-      });
+      target.scrollIntoView({ behavior: 'smooth' });
     }
   });
 });
+
