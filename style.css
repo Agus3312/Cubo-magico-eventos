@@ -380,6 +380,7 @@ footer{ background:var(--ink-2); color:#B8A8CC; padding:50px 0 30px; }
   .why-grid{ grid-template-columns:1fr; }
   .rev-grid{ grid-template-columns:1fr; }
   .loc-grid{ grid-template-columns:1fr; }
+  .loc-grid iframe{ height:260px; order:-1; }
   .masonry{ columns:2 160px; }
   section{ padding:60px 0; }
   .sec-title{ font-size:1.6rem; }
